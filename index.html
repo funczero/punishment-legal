@@ -70,14 +70,18 @@
     .status {
       font-weight: 600;
       margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 1.1rem;
     }
 
     .status-dot {
       display: inline-block;
-      width: 10px;
-      height: 10px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
-      margin-right: 6px;
       vertical-align: middle;
       animation: pulse 1.5s infinite;
     }
@@ -149,7 +153,7 @@
         Status: 
         <span id="bot-status">
           <span class="status-dot" style="background-color: var(--unknown)"></span>
-          Verificando...
+          <span id="bot-text" style="color: var(--unknown)">Verificando...</span>
         </span>
       </p>
 
@@ -180,8 +184,8 @@
 
   <script>
     async function loadStatus() {
-      const el = document.getElementById('bot-status');
-      const dot = el.querySelector('.status-dot');
+      const dot = document.querySelector('.status-dot');
+      const text = document.getElementById('bot-text');
 
       try {
         const res = await fetch('https://punishment.squareweb.app/bot/status');
@@ -189,14 +193,17 @@
 
         if (data.online) {
           dot.style.backgroundColor = 'var(--online)';
-          el.lastChild.textContent = ' Online';
+          text.textContent = 'Online';
+          text.style.color = 'var(--online)';
         } else {
           dot.style.backgroundColor = 'var(--offline)';
-          el.lastChild.textContent = ' Offline';
+          text.textContent = 'Offline';
+          text.style.color = 'var(--offline)';
         }
       } catch {
         dot.style.backgroundColor = 'var(--unknown)';
-        el.lastChild.textContent = ' Indisponível';
+        text.textContent = 'Indisponível';
+        text.style.color = 'var(--unknown)';
       }
     }
 
