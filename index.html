@@ -12,6 +12,9 @@
       --primary: #5865f2;
       --text: #e6e6eb;
       --muted: #9aa0b3;
+      --online: #43b581;
+      --offline: #f04747;
+      --unknown: #faa61a;
     }
 
     * {
@@ -60,8 +63,13 @@
 
     .subtitle {
       color: var(--muted);
-      margin-bottom: 32px;
+      margin-bottom: 16px;
       line-height: 1.6;
+    }
+
+    .status {
+      font-weight: 600;
+      margin-bottom: 32px;
     }
 
     .links {
@@ -121,6 +129,12 @@
         Punishment é um bot de moderação avançado para Discord, projetado para manter servidores organizados e seguros.
       </p>
 
+      <!-- STATUS DO BOT -->
+      <p class="status">
+        Status do Punishment: 
+        <span id="bot-status" style="color: var(--unknown)">Verificando...</span>
+      </p>
+
       <div class="links">
         <a href="./terms" class="link-card">
           <div class="link-title">Termos de Uso</div>
@@ -145,6 +159,31 @@
 
     </div>
   </div>
+
+  <script>
+    async function loadStatus() {
+      try {
+        const res = await fetch('https://punishment.squareweb.app/bot/status');
+        const data = await res.json();
+        const el = document.getElementById('bot-status');
+
+        if (data.online) {
+          el.textContent = 'Online • Operando normalmente';
+          el.style.color = 'var(--online)';
+        } else {
+          el.textContent = 'Offline';
+          el.style.color = 'var(--offline)';
+        }
+      } catch {
+        const el = document.getElementById('bot-status');
+        el.textContent = 'Indisponível';
+        el.style.color = 'var(--unknown)';
+      }
+    }
+
+    loadStatus();
+    setInterval(loadStatus, 30000); // atualiza a cada 30s
+  </script>
 
 </body>
 </html>
