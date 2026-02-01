@@ -8,10 +8,11 @@
     :root {
       --bg-dark: #0a0a0c;
       --bg-gradient: radial-gradient(circle at center, #111116 0%, #0a0a0c 100%);
-      --primary-red: #fe3838;
       --text-main: #ffffff;
       --text-muted: #a1a1aa;
+      --accent-gray: #3f3f46;
       --footer-color: #333;
+      --link-color: #d4d4d8;
     }
 
     * {
@@ -42,7 +43,6 @@
       z-index: 1;
     }
 
-    /* Link de Voltar Estilizado */
     .back {
       display: inline-block;
       margin-bottom: 32px;
@@ -54,7 +54,7 @@
     }
 
     .back:hover {
-      color: var(--primary-red);
+      color: var(--text-main);
     }
 
     .card {
@@ -63,10 +63,10 @@
     }
 
     h1 {
-      font-size: 3.2rem;
+      font-size: 3rem;
       font-weight: 800;
       margin-bottom: 8px;
-      color: var(--primary-red);
+      color: var(--text-main);
       letter-spacing: -1.5px;
     }
 
@@ -79,19 +79,20 @@
     }
 
     h2 {
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       font-weight: 700;
       margin-top: 48px;
       margin-bottom: 16px;
       color: var(--text-main);
-      border-left: 3px solid var(--primary-red);
+      border-left: 2px solid var(--accent-gray);
       padding-left: 16px;
     }
 
     p {
       color: var(--text-muted);
       margin-bottom: 20px;
-      font-size: 1.05rem;
+      font-size: 1rem;
+      text-align: justify;
     }
 
     ul {
@@ -108,26 +109,25 @@
     }
 
     li::before {
-      content: "•";
-      color: var(--primary-red);
+      content: "—";
+      color: var(--accent-gray);
       position: absolute;
       left: 0;
-      font-weight: bold;
     }
 
     strong {
-      color: var(--text-main);
+      color: #e4e4e7;
       font-weight: 600;
     }
 
     .card a {
-      color: var(--primary-red);
-      text-decoration: none;
-      font-weight: 500;
+      color: var(--link-color);
+      text-decoration: underline;
+      text-underline-offset: 3px;
     }
 
     .card a:hover {
-      text-decoration: underline;
+      color: var(--text-main);
     }
 
     footer {
@@ -145,10 +145,9 @@
       text-decoration: none;
     }
 
-    /* Responsividade */
     @media (max-width: 480px) {
-      h1 { font-size: 2.5rem; }
-      h2 { font-size: 1.2rem; }
+      h1 { font-size: 2.2rem; }
+      h2 { font-size: 1.15rem; }
       body { padding: 40px 20px; }
     }
   </style>
@@ -240,7 +239,7 @@
 </div>
 
 <footer>
-  © 2026 Punishment by <a href="https://funczero.xyz" target="_blank">FuncZero</a> Todos os direitos reservados.
+  © 2026 Punishment. Todos os direitos reservados.
 </footer>
 
 </body>
