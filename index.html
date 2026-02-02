@@ -83,6 +83,31 @@
       margin-right: auto;
     }
 
+    .btn-add {
+      display: inline-block;
+      background-color: var(--primary-red);
+      color: white;
+      text-decoration: none;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 32px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 15px rgba(254, 56, 56, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .btn-add:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(254, 56, 56, 0.25);
+      filter: brightness(1.1);
+    }
+
+    .btn-add:active {
+      transform: translateY(0);
+    }
+
     .status {
       font-weight: 500;
       margin-bottom: 40px;
@@ -156,6 +181,7 @@
       h1 { font-size: 2.5rem; }
       .subtitle { font-size: 1rem; }
       .links { flex-direction: column; gap: 15px; }
+      .btn-add { width: 100%; }
     }
   </style>
 </head>
@@ -169,6 +195,10 @@
       <p class="subtitle">
         Bot de moderação avançado para Discord, projetado para manter servidores organizados e seguros.
       </p>
+
+      <a href="https://discord.com/oauth2/authorize?client_id=1155843839932764253&permissions=8&integration_type=0&scope=applications.commands+bot" class="btn-add">
+        Me Adicione
+      </a>
 
       <p class="status">
         <span id="bot-status" style="display: flex; align-items: center; gap: 8px;">
